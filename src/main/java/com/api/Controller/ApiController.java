@@ -23,10 +23,10 @@ public class ApiController {
 	
 	DniValidator dniValidador = new DniValidator();
 	//Valida el dni pasado mediante Json
-	@PostMapping("/dni/validar")
+	@PostMapping("/validar")
 	public ResponseEntity<DniEntity> validarDni(@RequestBody Dni dni) 
 	{
-		Dni validado = dniValidador.validacionDni(dni.getDni());
+		Dni validado = dniValidador.validacion(dni.getDni());
 		DniEntity dniResultado=new DniEntity(validado.getCodigoError(),validado.getDni(),validado.getMensajeError());
 		return  ResponseEntity.ok().body(dniResultado);
 	}
