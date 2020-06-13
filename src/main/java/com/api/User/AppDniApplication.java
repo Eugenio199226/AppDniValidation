@@ -1,4 +1,4 @@
-package com.api.User;
+package com.api.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,11 +6,9 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import com.api.Controller.ApiController;
 import com.api.Repository.DniValidadorRepository;
-
-
-import DniEntity.DniEntity;
+import com.api.controller.ApiController;
+import com.api.entity.DniEntity;
 
 @SpringBootApplication
 //Se define la ubicación del controlador

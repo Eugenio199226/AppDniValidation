@@ -1,6 +1,6 @@
-package com.api.Utils;
+package com.api.utils;
 
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -23,7 +23,7 @@ public class DniValidator {
 			return validadorNie(valor);
 		}else 
 		{
-			return new Dni(1,"Formato Documento Incorrecto",valor);
+			return new Dni(1,"El formato del documento es incorrecto",valor);
 		}
 	}
 	private Dni validacionDni(String dni) 
@@ -51,7 +51,7 @@ public class DniValidator {
     			{
     				resultado.setCodigoError(2);
     				resultado.setDni(dni);
-    				resultado.setMensajeError("Letra del Dni Incorrecta");
+    				resultado.setMensajeError("La letra del Dni Incorrecta");
     				
     				
     				return resultado;
@@ -74,7 +74,7 @@ public class DniValidator {
 	    {
 		 	//value between 0-22
 		 	int valorCaculado=numero%23;
-		 	Hashtable<String, Integer> dniLetras= new Hashtable<String, Integer>();
+		 	HashMap <String, Integer> dniLetras=new HashMap <>();
 		 	dniLetras.put("T", 0);
 		 	dniLetras.put("R", 1);
 		 	dniLetras.put("W", 2);
@@ -116,7 +116,7 @@ public class DniValidator {
 	 
 	private Dni validadorNie(String nie) 
 		{
-		 	Dni resultado = new Dni(7,"Nie No Validado","");
+		 	Dni resultado = new Dni(7,"El Nie no ha podido ser validado","");
 
 	    	//Check format
 	    		try 
@@ -141,7 +141,7 @@ public class DniValidator {
 	    			{
 	    				resultado.setCodigoError(6);
 	    				resultado.setDni(nie);
-	    				resultado.setMensajeError("La letra del Nie no es valida");
+	    				resultado.setMensajeError("La letra del nie es incorrecta");
 	    				return resultado;
 	    			}
 	    			
@@ -156,7 +156,7 @@ public class DniValidator {
 		
 	private Boolean comparadorNie(String letra,String numeros,String letraEx) 
 		    {
-			 	Hashtable<String, Integer> nifLetras= new Hashtable<String, Integer>();
+		HashMap <String, Integer> nifLetras= new HashMap <>();
 			 	nifLetras.put("X", 0);
 			 	nifLetras.put("Y", 1);
 			 	nifLetras.put("Z", 2);
@@ -167,8 +167,8 @@ public class DniValidator {
 			 		entry = itr2.next();
 			 		
 			 		if(entry.getKey().equals(letraEx)){
-		            	
-			 			numeros=entry.getValue()+numeros;
+		            	StringBuilder sBl = new StringBuilder();
+			 			numeros=sBl.append(entry.getValue()+numeros).toString();
 		            }
 			 	}
 			 	//value between 0-22
@@ -176,7 +176,7 @@ public class DniValidator {
 			 	int valorCaculado=num%23;
 
 			 	
-			 	Hashtable<String, Integer> dniLetras= new Hashtable<String, Integer>();
+			 	HashMap <String, Integer> dniLetras= new HashMap <>();
 			 	dniLetras.put("T", 0);
 			 	dniLetras.put("R", 1);
 			 	dniLetras.put("W", 2);
